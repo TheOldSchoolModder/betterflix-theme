@@ -634,4 +634,91 @@ textarea {
 /*******************************************************
   END OF THEME
 *******************************************************/
+/*******************************************************
+  SEARCH PAGE OVERRIDE – BRUTE FORCE
+*******************************************************/
 
+/* Layout: pull search box down & center it */
+body .page input[type="search"],
+body .page .emby-input[type="search"],
+body .page .searchField input[type="text"],
+body .page .searchField input[type="search"] {
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 80px auto 40px auto !important;
+    display: block !important;
+
+    border-radius: 999px !important;
+    padding: 0.85rem 1.4rem 0.85rem 2.8rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    background: rgba(5, 5, 15, 0.96) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75) !important;
+    color: var(--text-main) !important;
+    font-size: 1rem !important;
+}
+
+/* Placeholder color */
+body .page input[type="search"]::placeholder {
+    color: var(--text-soft) !important;
+}
+
+/* Focus glow */
+body .page input[type="search"]:focus,
+body .page .emby-input[type="search"]:focus {
+    outline: none !important;
+    border-color: var(--nf-red-soft) !important;
+    box-shadow:
+        0 0 0 1px var(--nf-red-soft),
+        0 22px 55px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Suggestions container */
+body .page h2 + div,
+body .page .searchSuggestions,
+body .page #searchResults {
+    max-width: 700px !important;
+    margin: 0 auto 60px auto !important;
+}
+
+/* Suggestions title */
+body .page h2 {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #f7f7fa !important;
+    text-align: center !important;
+    margin-bottom: 1.2rem !important;
+}
+
+/* Each suggestion row as a pill */
+body .page .searchSuggestions a,
+body .page #searchResults a,
+body .page a[data-type="SearchHint"] {
+    display: block !important;
+    padding: 0.5rem 0.9rem !important;
+    margin: 0.1rem auto !important;
+    border-radius: 0.7rem !important;
+    text-decoration: none !important;
+    color: var(--text-main) !important;
+    background: transparent !important;
+    max-width: 520px !important;
+    transition:
+        background 130ms ease-out,
+        transform 130ms ease-out,
+        color 130ms ease-out !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Hover effect */
+body .page .searchSuggestions a:hover,
+body .page #searchResults a:hover,
+body .page a[data-type="SearchHint"]:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px) !important;
+}
