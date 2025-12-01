@@ -722,3 +722,6 @@ body .page a[data-type="SearchHint"]:hover {
     color: #ffffff !important;
     transform: translateY(-1px) !important;
 }
+input[type="search"] {
+    background: magenta !important;
+}
