@@ -1,6 +1,5 @@
 /*******************************************************
   JELLYFIN – "BETTER THAN NETFLIX" THEME
-  Paste into: Dashboard → General → Branding → Custom CSS
 *******************************************************/
 
 /* ---------- ROOT COLORS & GLOBAL TWEAKS ---------- */
@@ -9,33 +8,39 @@
     --nf-red: #e50914;
     --nf-red-soft: #ff0f1f;
     --nf-red-dark: #b00610;
+
     --bg-main: #050509;
     --bg-elevated: #101018;
     --bg-elevated-soft: rgba(10, 10, 18, 0.92);
     --bg-card: #14141f;
     --bg-hover: #1b1b28;
+
     --text-main: #f5f5f7;
     --text-muted: #a0a0b4;
     --text-soft: #777792;
+
     --border-subtle: rgba(255, 255, 255, 0.06);
     --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.65);
+
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
     --card-radius: 0.9rem;
+
     --transition-fast: 130ms ease-out;
     --transition-slow: 220ms ease-out;
+
     --backdrop-blur: blur(18px);
 }
 
 /* Global font + background */
-body,
-html {
+html,
+body {
     background: radial-gradient(circle at top left, #15151f 0, #050509 48%, #000 100%) fixed !important;
     color: var(--text-main) !important;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
-/* Remove default blue accents */
+/* Remove default heavy shadows */
 .skinHeader,
 .page,
 .dialog,
@@ -44,7 +49,7 @@ html {
     box-shadow: none !important;
 }
 
-/* Scrollbar – thin & minimal */
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -66,13 +71,13 @@ html {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
 }
 
-/* Make header height a bit chunkier */
+/* Chunky header height */
 .skinHeader-withBackground,
 .skinHeader > .flex {
     min-height: 64px;
 }
 
-/* Logo – Netflix-esque wordmark feeling */
+/* Logo / wordmark */
 .headerLogo,
 .pageTitleWithDefaultLogo {
     font-weight: 800 !important;
@@ -82,12 +87,15 @@ html {
     text-shadow: 0 0 18px rgba(229, 9, 20, 0.4);
 }
 
-/* Hide default Jellyfin logo image if present */
+/* Hide default triangle Jellyfin logo image */
 .headerLogo img {
     display: none !important;
 }
 
-/* Top tabs / nav links */
+/* Header tabs – where your libraries (Movies / TV / Anime) will appear
+   NOTE: to actually GET those tabs, configure them for your user in:
+   Dashboard → Users → (you) → Home screen → My Media / Views
+*/
 .headerTabs .emby-tab-button {
     text-transform: none;
     font-weight: 500;
@@ -111,13 +119,16 @@ html {
     background: linear-gradient(90deg, var(--nf-red) 0, var(--nf-red-soft) 100%);
 }
 
-/* Right side header buttons (user menu, notifications, etc.) */
+/* Right-side header icons (user, cast, etc.) */
 .headerUserButton,
 .headerButton {
     background: transparent !important;
     border-radius: 999px;
     border: 1px solid transparent !important;
-    transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+    transition:
+        background var(--transition-fast),
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
 }
 .headerUserButton:hover,
 .headerButton:hover {
@@ -126,7 +137,7 @@ html {
     transform: translateY(-1px);
 }
 
-/* ---------- SEARCH BAR – BIG NETFLIX-STYLE ---------- */
+/* ---------- GLOBAL SEARCH IN HEADER ---------- */
 
 .searchField,
 .searchField input,
@@ -142,7 +153,6 @@ html {
     box-shadow: 0 14px 35px rgba(0, 0, 0, 0.65);
     overflow: hidden;
 }
-
 .searchField input {
     color: var(--text-main) !important;
 }
@@ -153,13 +163,11 @@ html {
 /* ---------- HOME PAGE LAYOUT ---------- */
 
 /*
- NOTE: To make your "entire library" appear,
- configure your libraries & smart views in Jellyfin
- and pin them to Home. This CSS makes each library row
- look like Netflix carousels and keeps them dense.
+  NOTE: To make your "entire library" appear, configure your libraries
+  & smart views in Jellyfin and pin them to Home. This CSS just makes
+  those rows look like Netflix-style carousels.
 */
 
-/* Container max width & padding */
 .page.hasTabs .content-primary,
 .page .content-primary {
     max-width: 1680px;
@@ -187,7 +195,7 @@ html {
     margin-bottom: 0.6rem;
 }
 
-/* Row containers – Netflix style horizontal rows */
+/* Horizontal rows */
 .emby-scroller,
 .itemsContainer.itemsContainer-horizontal,
 .itemsContainer.scrollSlider {
@@ -195,14 +203,14 @@ html {
     padding-bottom: 1.2rem;
 }
 
-/* Hide ugly scroll arrows and show edge fade instead */
+/* Hide default row scroll arrows */
 .scrollbuttoncontainer,
 .scrollbutton {
     opacity: 0 !important;
     pointer-events: none !important;
 }
 
-/* Soft gradient edges for rows */
+/* Edge gradients */
 .itemsContainer.itemsContainer-horizontal::before,
 .itemsContainer.itemsContainer-horizontal::after {
     content: "";
@@ -241,13 +249,13 @@ html {
     background: var(--bg-card);
 }
 
-/* Remove borders around cards */
+/* Remove card borders */
 .cardBox,
 .itemBackdrop {
     border: none !important;
 }
 
-/* Poster aspect ratio & size */
+/* Poster sizing / animation */
 .itemsContainer .cardScalable {
     transform-origin: center center;
     transition:
@@ -256,7 +264,7 @@ html {
         filter var(--transition-slow);
 }
 
-/* Default poster size tweaks on desktop */
+/* Desktop sizes */
 @media (min-width: 1000px) {
     .itemsContainer .cardScalable {
         min-width: 170px;
@@ -264,7 +272,7 @@ html {
     }
 }
 
-/* Hover/focus "lift" */
+/* Hover lift */
 .itemsContainer .cardScalable:hover,
 .itemsContainer .cardScalable:focus-within {
     transform: translateY(-8px) scale(1.04);
@@ -272,7 +280,7 @@ html {
     z-index: 5;
 }
 
-/* Darken background cards & desaturate slightly */
+/* Image color tweaks */
 .cardImageContainer img,
 .primaryImageWrapper img {
     filter: saturate(1.05) contrast(1.02);
@@ -283,7 +291,7 @@ html {
     transform: scale(1.04);
 }
 
-/* Card texts (title, subtitle) */
+/* Card texts */
 .cardText,
 .cardText-secondary,
 .itemDetailText {
@@ -304,7 +312,7 @@ html {
     color: var(--text-muted) !important;
 }
 
-/* Genre tags / badges inside cards */
+/* Genre-style badges in cards */
 .mediaInfoIcons,
 .mediaInfoItem {
     background: linear-gradient(135deg, rgba(229, 9, 20, 0.28), rgba(3, 3, 12, 0.9));
@@ -316,15 +324,14 @@ html {
     color: #fff;
 }
 
-/* Overlay gradient on posters for better text contrast */
+/* Overlay gradient on posters */
 .cardOverlayContainer,
 .cardOverlayButton {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0, transparent 60%);
 }
 
-/* ---------- "HERO" / CONTINUE WATCHING ROW ---------- */
+/* ---------- CONTINUE WATCHING “HERO” ROW ---------- */
 
-/* Make Continue Watching row stand out */
 .section0 .itemsContainer.itemsContainer-horizontal .cardScalable,
 .section0 .itemsContainer.itemsContainer-horizontal .cardImageContainer {
     min-width: 260px;
@@ -332,7 +339,7 @@ html {
     border-radius: var(--radius-xl) !important;
 }
 
-/* Progress bar styling */
+/* Progress bar */
 .innerCardFooter,
 .itemProgressBar,
 .progressbarValue {
@@ -343,7 +350,7 @@ html {
     background: linear-gradient(90deg, var(--nf-red) 0, var(--nf-red-soft) 100%) !important;
 }
 
-/* ---------- DETAILS PAGE (MOVIE/SHOW PAGE) ---------- */
+/* ---------- DETAILS PAGE (MOVIE/SHOW) ---------- */
 
 .detailPageContent,
 .itemDetailPage {
@@ -363,7 +370,7 @@ html {
     pointer-events: none;
 }
 
-/* Title on details page */
+/* Title */
 .detailPagePrimaryTitle {
     font-size: clamp(2.2rem, 3vw, 3.1rem) !important;
     font-weight: 800;
@@ -371,14 +378,14 @@ html {
     text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
 }
 
-/* Metadata line (year • runtime • rating) */
+/* Metadata line */
 .detailPagePrimaryText,
 .detailPageSecondaryText {
     font-size: 0.98rem;
     color: var(--text-muted);
 }
 
-/* Big Play button */
+/* Big primary play button */
 .detailPageContent .btnPlay,
 .btnPlayDetail,
 .button-flat.btnPlay {
@@ -400,7 +407,7 @@ html {
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
 }
 
-/* Secondary buttons (add to list, favorite, etc.) */
+/* Secondary action buttons */
 .btnAction,
 .detailPageContent .btnFlat,
 .detailPageContent .button-flat {
@@ -415,7 +422,7 @@ html {
     background: rgba(255, 255, 255, 0.06) !important;
 }
 
-/* ---------- SIDE MENU / DRAWER ---------- */
+/* ---------- SIDE DRAWER ---------- */
 
 .mainDrawer {
     background: rgba(0, 0, 0, 0.96) !important;
@@ -423,7 +430,7 @@ html {
     border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Drawer list items */
+/* Drawer items */
 .navMenuOption,
 .navMenuOption-selected {
     border-radius: 999px;
@@ -501,7 +508,113 @@ textarea {
     border-radius: 18px !important;
 }
 
-/* ---------- MOBILE / SMALL SCREEN ADJUSTMENTS ---------- */
+/* ---------- SEARCH PAGE (DEDICATED) ---------- */
+
+/* Center search box row */
+#searchPage .searchFieldsInner {
+    justify-content: center !important;
+}
+
+/* Big pill search input (actual DOM: #searchTextInput) */
+#searchTextInput.emby-input.searchfields-txtSearch {
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 80px auto 40px auto !important;
+    display: block !important;
+
+    border-radius: 999px !important;
+    padding: 0.85rem 1.4rem 0.85rem 2.8rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    background: rgba(5, 5, 15, 0.96) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75) !important;
+    color: var(--text-main) !important;
+    font-size: 1rem !important;
+}
+#searchTextInput::placeholder {
+    color: var(--text-soft) !important;
+}
+#searchTextInput:focus {
+    outline: none !important;
+    border-color: var(--nf-red-soft) !important;
+    box-shadow:
+        0 0 0 1px var(--nf-red-soft),
+        0 22px 55px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Optional: hide the off-center search icon under the bar */
+#searchPage .searchFields-icon {
+    display: none !important;
+}
+
+/* Suggestions container */
+#searchPage .verticalSection.searchSuggestions {
+    max-width: 1100px !important;
+    margin: 0 auto 80px auto !important;
+    text-align: left !important;
+}
+
+/* Suggestions title */
+#searchPage .verticalSection.searchSuggestions > h2 {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #f7f7fa !important;
+    text-align: left !important;
+    margin: 0 0 1.2rem 0 !important;
+}
+
+/* The list that holds the suggestion links */
+#searchPage .searchSuggestionsList {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+}
+
+/* Each suggestion as a pill “chip” */
+#searchPage .verticalSection.searchSuggestions a.emyb-button,
+#searchPage .verticalSection.searchSuggestions a.emby-button,
+#searchPage .verticalSection.searchSuggestions a.button-link,
+#searchPage .verticalSection.searchSuggestions a {
+    display: inline-block !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 999px !important;
+    text-decoration: none !important;
+    color: var(--text-main) !important;
+
+    background: radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.06) 0,
+        rgba(5, 5, 15, 0.9) 45%,
+        rgba(0, 0, 0, 0.98) 100%
+    ) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+    transition:
+        transform 140ms ease-out,
+        box-shadow 140ms ease-out,
+        background 140ms ease-out !important;
+}
+#searchPage .verticalSection.searchSuggestions a:hover,
+#searchPage .verticalSection.searchSuggestions a:focus-visible {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9) !important;
+    background: radial-gradient(
+        circle at top left,
+        rgba(229, 9, 20, 0.18) 0,
+        rgba(5, 5, 15, 0.96) 45%,
+        rgba(0, 0, 0, 1) 100%
+    ) !important;
+}
+
+/* ---------- MOBILE / SMALL SCREENS ---------- */
 
 @media (max-width: 900px) {
     .page.hasTabs .content-primary,
@@ -523,205 +636,13 @@ textarea {
     .skinHeader > .flex {
         min-height: 58px;
     }
-}
-/*******************************************************
-  SEARCH PAGE – CLEAN NETFLIX-STYLE
-*******************************************************/
 
-/* Page layout – pull content in, center it a bit */
-.page[data-page-id="search"],
-.page-search {
-    /* if these attrs don't exist, this rule is ignored – safe */
+    #searchTextInput.emby-input.searchfields-txtSearch {
+        margin-top: 70px !important;
+        max-width: calc(100% - 32px) !important;
+    }
 }
 
-.page .searchFields {
-    max-width: 900px;
-    margin: 80px auto 40px auto;
-    display: flex;
-    justify-content: center;
-}
-
-/* Big pill search bar */
-.page .searchFields input.searchInput,
-.page .searchFields .searchInput,
-.page .searchFields input[type="search"] {
-    width: 100%;
-    border-radius: 999px !important;
-    padding: 0.85rem 1.4rem 0.85rem 2.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.16) !important;
-    background: rgba(5, 5, 15, 0.96) !important;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
-    color: var(--text-main) !important;
-    font-size: 1rem;
-}
-
-.page .searchFields input.searchInput::placeholder,
-.page .searchFields .searchInput::placeholder {
-    color: var(--text-soft) !important;
-}
-
-.page .searchFields input.searchInput:focus,
-.page .searchFields .searchInput:focus,
-.page .searchFields input[type="search"]:focus {
-    outline: none !important;
-    border-color: var(--nf-red-soft) !important;
-    box-shadow:
-        0 0 0 1px var(--nf-red-soft),
-        0 22px 55px rgba(0, 0, 0, 0.9);
-}
-
-/* Suggestions block container */
-#searchResults,
-.searchResults,
-.searchSuggestions {
-    max-width: 700px;
-    margin: 0 auto 60px auto;
-    text-align: left;
-}
-
-/* "Suggestions" title */
-#searchResults h2,
-.searchResults h2,
-.searchSuggestions h2 {
-    font-size: 1.4rem !important;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #f7f7fa;
-    text-align: center;
-    margin-bottom: 1.2rem;
-}
-
-/* Each suggestion row as a nice pill */
-#searchResults a,
-.searchResults a,
-.searchSuggestions a {
-    display: block;
-    padding: 0.5rem 0.9rem;
-    margin: 0.1rem auto;
-    border-radius: 0.7rem;
-    text-decoration: none !important;
-    color: var(--text-main) !important;
-    background: transparent;
-    max-width: 520px;
-    transition:
-        background 130ms ease-out,
-        transform 130ms ease-out,
-        color 130ms ease-out;
-    cursor: pointer;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* Hover effect on suggestions */
-#searchResults a:hover,
-.searchResults a:hover,
-.searchSuggestions a:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: #ffffff !important;
-    transform: translateY(-1px);
-}
-
-#divHomeFavorites,
-#divHomeLatest,
-#divFavoriteCollections,
-#divMyMedia,
-#homeDownloads {
-    display: none !important;
-}
 /*******************************************************
   END OF THEME
 *******************************************************/
-/*******************************************************
-  SEARCH PAGE OVERRIDE – BRUTE FORCE
-*******************************************************/
-
-/* Layout: pull search box down & center it */
-body .page input[type="search"],
-body .page .emby-input[type="search"],
-body .page .searchField input[type="text"],
-body .page .searchField input[type="search"] {
-    width: 100% !important;
-    max-width: 900px !important;
-    margin: 80px auto 40px auto !important;
-    display: block !important;
-
-    border-radius: 999px !important;
-    padding: 0.85rem 1.4rem 0.85rem 2.8rem !important;
-    border: 1px solid rgba(255, 255, 255, 0.16) !important;
-    background: rgba(5, 5, 15, 0.96) !important;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75) !important;
-    color: var(--text-main) !important;
-    font-size: 1rem !important;
-}
-
-/* Placeholder color */
-body .page input[type="search"]::placeholder {
-    color: var(--text-soft) !important;
-}
-
-/* Focus glow */
-body .page input[type="search"]:focus,
-body .page .emby-input[type="search"]:focus {
-    outline: none !important;
-    border-color: var(--nf-red-soft) !important;
-    box-shadow:
-        0 0 0 1px var(--nf-red-soft),
-        0 22px 55px rgba(0, 0, 0, 0.9) !important;
-}
-
-/* Suggestions container */
-body .page h2 + div,
-body .page .searchSuggestions,
-body .page #searchResults {
-    max-width: 700px !important;
-    margin: 0 auto 60px auto !important;
-}
-
-/* Suggestions title */
-body .page h2 {
-    font-size: 1.4rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.14em !important;
-    text-transform: uppercase !important;
-    color: #f7f7fa !important;
-    text-align: center !important;
-    margin-bottom: 1.2rem !important;
-}
-
-/* Each suggestion row as a pill */
-body .page .searchSuggestions a,
-body .page #searchResults a,
-body .page a[data-type="SearchHint"] {
-    display: block !important;
-    padding: 0.5rem 0.9rem !important;
-    margin: 0.1rem auto !important;
-    border-radius: 0.7rem !important;
-    text-decoration: none !important;
-    color: var(--text-main) !important;
-    background: transparent !important;
-    max-width: 520px !important;
-    transition:
-        background 130ms ease-out,
-        transform 130ms ease-out,
-        color 130ms ease-out !important;
-    cursor: pointer !important;
-    text-align: center !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-}
-
-/* Hover effect */
-body .page .searchSuggestions a:hover,
-body .page #searchResults a:hover,
-body .page a[data-type="SearchHint"]:hover {
-    background: rgba(255, 255, 255, 0.06) !important;
-    color: #ffffff !important;
-    transform: translateY(-1px) !important;
-}
-input[type="search"] {
-    background: magenta !important;
-}
