@@ -646,3 +646,118 @@ textarea {
 /*******************************************************
   END OF THEME
 *******************************************************/
+/*******************************************************
+  SEARCH PAGE – FINAL OVERRIDE FOR THIS JELLYFIN VERSION
+*******************************************************/
+
+/* Center the search bar row */
+#searchPage .searchFieldsInner {
+    justify-content: center !important;
+}
+
+/* Big pill search bar (actual DOM: #searchTextInput) */
+#searchTextInput.emby-input.searchfields-txtSearch {
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 80px auto 40px auto !important;
+    display: block !important;
+
+    border-radius: 999px !important;
+    padding: 0.85rem 1.4rem 0.85rem 2.8rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    background: rgba(5, 5, 15, 0.96) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75) !important;
+    color: var(--text-main) !important;
+    font-size: 1rem !important;
+}
+#searchTextInput::placeholder {
+    color: var(--text-soft) !important;
+}
+#searchTextInput:focus {
+    outline: none !important;
+    border-color: var(--nf-red-soft) !important;
+    box-shadow:
+        0 0 0 1px var(--nf-red-soft),
+        0 22px 55px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Optional: hide the off-center search icon under the bar */
+#searchPage .searchFields-icon {
+    display: none !important;
+}
+
+/* Suggestions container sizing */
+#searchPage .verticalSection.searchSuggestions {
+    max-width: 1100px !important;
+    margin: 0 auto 80px auto !important;
+    text-align: left !important;
+}
+
+/* "Suggestions" title */
+#searchPage .verticalSection.searchSuggestions > h2 {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #f7f7fa !important;
+    text-align: left !important;
+    margin: 0 0 1.2rem 0 !important;
+}
+
+/* Make .searchSuggestionsList a flex-wrap row of items */
+#searchPage .searchSuggestionsList {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+    justify-content: flex-start !important;
+}
+
+/* Each child div is one item container */
+#searchPage .searchSuggestionsList > div {
+    display: block !important;
+}
+
+/* The actual <a> link -> turn into a pill "chip" */
+#searchPage .searchSuggestionsList > div > a.emby-button.button-link {
+    display: inline-block !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 999px !important;
+
+    text-decoration: none !important;
+    color: var(--text-main) !important;
+    cursor: pointer !important;
+
+    background: radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.06) 0,
+        rgba(5, 5, 15, 0.9) 45%,
+        rgba(0, 0, 0, 0.98) 100%
+    ) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+    transition:
+        transform 140ms ease-out,
+        box-shadow 140ms ease-out,
+        background 140ms ease-out !important;
+}
+
+/* Hover / focus effect */
+#searchPage .searchSuggestionsList > div > a.emby-button.button-link:hover,
+#searchPage .searchSuggestionsList > div > a.emby-button.button-link:focus-visible {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9) !important;
+    background: radial-gradient(
+        circle at top left,
+        rgba(229, 9, 20, 0.18) 0,
+        rgba(5, 5, 15, 0.96) 45%,
+        rgba(0, 0, 0, 1) 100%
+    ) !important;
+}
+
