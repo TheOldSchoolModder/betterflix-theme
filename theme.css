@@ -524,12 +524,106 @@ textarea {
         min-height: 58px;
     }
 }
+/*******************************************************
+  SEARCH PAGE – CLEAN NETFLIX-STYLE
+*******************************************************/
 
-/* ---------- OPTIONAL: HIDE UNUSED STUFF ON HOME ---------- */
+/* Page layout – pull content in, center it a bit */
+.page[data-page-id="search"],
+.page-search {
+    /* if these attrs don't exist, this rule is ignored – safe */
+}
 
-/* Uncomment these if you want a *very* clean, content-first home. */
+.page .searchFields {
+    max-width: 900px;
+    margin: 80px auto 40px auto;
+    display: flex;
+    justify-content: center;
+}
 
-/*
+/* Big pill search bar */
+.page .searchFields input.searchInput,
+.page .searchFields .searchInput,
+.page .searchFields input[type="search"] {
+    width: 100%;
+    border-radius: 999px !important;
+    padding: 0.85rem 1.4rem 0.85rem 2.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    background: rgba(5, 5, 15, 0.96) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+    color: var(--text-main) !important;
+    font-size: 1rem;
+}
+
+.page .searchFields input.searchInput::placeholder,
+.page .searchFields .searchInput::placeholder {
+    color: var(--text-soft) !important;
+}
+
+.page .searchFields input.searchInput:focus,
+.page .searchFields .searchInput:focus,
+.page .searchFields input[type="search"]:focus {
+    outline: none !important;
+    border-color: var(--nf-red-soft) !important;
+    box-shadow:
+        0 0 0 1px var(--nf-red-soft),
+        0 22px 55px rgba(0, 0, 0, 0.9);
+}
+
+/* Suggestions block container */
+#searchResults,
+.searchResults,
+.searchSuggestions {
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+    text-align: left;
+}
+
+/* "Suggestions" title */
+#searchResults h2,
+.searchResults h2,
+.searchSuggestions h2 {
+    font-size: 1.4rem !important;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #f7f7fa;
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
+
+/* Each suggestion row as a nice pill */
+#searchResults a,
+.searchResults a,
+.searchSuggestions a {
+    display: block;
+    padding: 0.5rem 0.9rem;
+    margin: 0.1rem auto;
+    border-radius: 0.7rem;
+    text-decoration: none !important;
+    color: var(--text-main) !important;
+    background: transparent;
+    max-width: 520px;
+    transition:
+        background 130ms ease-out,
+        transform 130ms ease-out,
+        color 130ms ease-out;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Hover effect on suggestions */
+#searchResults a:hover,
+.searchResults a:hover,
+.searchSuggestions a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
 #divHomeFavorites,
 #divHomeLatest,
 #divFavoriteCollections,
@@ -537,8 +631,7 @@ textarea {
 #homeDownloads {
     display: none !important;
 }
-*/
-
 /*******************************************************
   END OF THEME
 *******************************************************/
+
